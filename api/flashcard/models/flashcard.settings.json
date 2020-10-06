@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "flashcards",
+  "info": {
+    "name": "flashcard"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "decks": {
+      "collection": "decks",
+      "via": "flashcards"
+    },
+    "tags": {
+      "via": "flashcards",
+      "collection": "tags"
+    }
+  }
+}

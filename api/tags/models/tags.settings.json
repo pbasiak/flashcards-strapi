@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "name": "Tags"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "decks": {
+      "collection": "decks",
+      "via": "tags",
+      "dominant": true
+    },
+    "flashcards": {
+      "collection": "flashcard",
+      "via": "tags",
+      "dominant": true
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

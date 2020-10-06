@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/flashcards",
+      "handler": "flashcard.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/flashcards/count",
+      "handler": "flashcard.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/flashcards/:id",
+      "handler": "flashcard.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/flashcards",
+      "handler": "flashcard.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/flashcards/:id",
+      "handler": "flashcard.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/flashcards/:id",
+      "handler": "flashcard.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
