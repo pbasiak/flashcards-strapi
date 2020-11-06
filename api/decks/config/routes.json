@@ -41,6 +41,22 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/decks/:id/like",
+      "handler": "decks.updateLike",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/decks/:id/unlike",
+      "handler": "decks.updateUnlike",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/decks/:id",
       "handler": "decks.delete",

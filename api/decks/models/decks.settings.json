@@ -20,6 +20,11 @@
     "tags": {
       "via": "decks",
       "collection": "tags"
+    },
+    "users": {
+      "via": "decks",
+      "plugin": "users-permissions",
+      "collection": "user"
     }
   }
 }
