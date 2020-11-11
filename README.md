@@ -1,3 +1,13 @@
 # Strapi application
 
-A quick description of your strapi application
+## to run
+
+```
+npx strapi develop
+```
+
+## Read only
+
+```
+yarn develop
+```
