@@ -30,11 +30,6 @@ jobs:
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
     - run: npm install
     - run: npx strapi build
-    - name: Archive artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: 'build'
-        path: 'build'
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
@@ -42,3 +37,17 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./build/
+        dry-run: true
+    - name: Upload via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: pebe.atthost24.pl
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./build/
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: 'build'
+        path: 'build'
+    
