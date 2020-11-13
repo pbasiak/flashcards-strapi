@@ -12,13 +12,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -33,3 +30,8 @@ jobs:
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
     - run: npm install
     - run: npx strapi build
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: 'build'
+        path: 'build'
