@@ -35,3 +35,10 @@ jobs:
       with:
         name: 'build'
         path: 'build'
+    - name: Upload via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: pebe.atthost24.pl
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        dangerous-clean-slate: true
