@@ -28,7 +28,7 @@ jobs:
         DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
         DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
         DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-    - run: npm install
+    - run: npm ci
     - run: npx strapi build
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
