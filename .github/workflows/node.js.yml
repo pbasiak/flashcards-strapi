@@ -37,7 +37,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
-        server-dir: ./build/
+        server-dir: ./
         exlude: node_modules/**/*
         log-level: verbose
         dry-run: true
@@ -48,7 +48,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
-        server-dir: ./build/
+        server-dir: ./
         exlude: node_modules/**/*
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
