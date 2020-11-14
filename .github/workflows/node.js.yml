@@ -36,7 +36,7 @@ jobs:
         server: pebe.atthost24.pl
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./build
-        server-dir: ./build
+        local-dir: ./build/
+        server-dir: ./build/
         log-level: verbose
     
