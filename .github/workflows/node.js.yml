@@ -36,7 +36,9 @@ jobs:
         server: pebe.atthost24.pl
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./build/
+        local-dir: ./
+        server-dir: ./build/
+        exlude: node_modules/**/*
         log-level: verbose
         dry-run: true
     - name: Upload via FTP
@@ -45,7 +47,9 @@ jobs:
         server: pebe.atthost24.pl
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./build/
+        local-dir: ./
+        server-dir: ./build/
+        exlude: node_modules/**/*
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
       with:
