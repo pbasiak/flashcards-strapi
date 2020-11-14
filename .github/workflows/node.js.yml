@@ -36,13 +36,7 @@ jobs:
         server: pebe.atthost24.pl
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
+        local-dir: ./build
         server-dir: ./
-        exclude: /.cache/* /node_modules/* /api/* /config/* /extensions/*
         log-level: verbose
-    - name: Archive artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: 'build'
-        path: 'build'
     
