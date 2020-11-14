@@ -38,7 +38,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./
         server-dir: ./
-        exclude: .cache/**/* node_modules/**/* api/**/* config/**/* extensions/**/*
+        exclude: /.cache/* /node_modules/* /api/* /config/* /extensions/*
         log-level: verbose
     - name: Archive artifacts
       uses: actions/upload-artifact@v2
