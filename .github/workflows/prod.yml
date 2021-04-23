@@ -36,4 +36,12 @@ jobs:
         local-dir: ./
         server-dir: ./api/v1/
         log-level: verbose
+        exclude: .git*
+          - .git*/**
+          - **/.git*/**
+          - node_modules/**
+          - node_modules/**/*
+          - .cache/**
+          - .cache/**/*
+          - .*
     
