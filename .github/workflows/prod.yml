@@ -1,0 +1,39 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Production Push
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+      env:
+        NODE_ENV: production
+        HOST: devflashcards.com
+        DATABASE_NAME: ${{ secrets.PROD_DATABASE_NAME }}
+        DATABASE_USERNAME: ${{ secrets.PROD_DATABASE_USERNAME }}
+        DATABASE_PASSWORD: ${{ secrets.PROD_DATABASE_PASSWORD }}
+        URL: https://devflashcards.com/api/v1/
+    - run: npm ci
+    - run: npx strapi build
+    - name: Upload via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: devflashcards.atthost24.pl
+        username: ${{ secrets.PROD_FTP_USERNAME }}
+        password: ${{ secrets.PROD_FTP_PASSWORD }}
+        local-dir: ./build/
+        server-dir: ./build/api/v1/
+        log-level: verbose
+    
