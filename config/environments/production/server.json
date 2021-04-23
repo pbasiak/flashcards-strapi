@@ -4,7 +4,7 @@
     "proxy": {
       "enabled": true,
       "ssl": true,
-      "host": "learn.dev.devpebe.com"
+      "host": "devflashcards.com"
     }
   }
   

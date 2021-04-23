@@ -34,6 +34,6 @@ jobs:
         username: ${{ secrets.PROD_FTP_USERNAME }}
         password: ${{ secrets.PROD_FTP_PASSWORD }}
         local-dir: ./build/
-        server-dir: ./build/api/v1/
+        server-dir: ./api/v1/
         log-level: verbose
     
