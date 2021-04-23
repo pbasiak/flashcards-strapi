@@ -24,7 +24,7 @@ jobs:
         DATABASE_NAME: ${{ secrets.PROD_DATABASE_NAME }}
         DATABASE_USERNAME: ${{ secrets.PROD_DATABASE_USERNAME }}
         DATABASE_PASSWORD: ${{ secrets.PROD_DATABASE_PASSWORD }}
-        URL: https://devflashcards.com/api/v1/
+        URL: https://api.devflashcards.com/
     - run: npm ci
     - run: npx strapi build
     - name: Upload via FTP
