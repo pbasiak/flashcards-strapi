@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
-  url: env('URL', 'http://api.devflashcards.com'),
+  url: env('URL', 'https://api.devflashcards.com'),
   admin: {
     auth: {
       secret: env('ADMIN_JWT_SECRET', '5703a61eb84b96755d78683fab7a209f'),
