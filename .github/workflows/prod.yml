@@ -28,7 +28,7 @@ jobs:
     - run: npm ci
     - run: npm run build
     - name: 'Create artifact directory'
-      run: mkdir artifact
+      run: mkdir artifacts
     - name: 'Tar files'
       run: tar --exclude=node_modules --exclude=.git --exclude=.github -cvf ./artifacts/devflashcards.tar ./
     - name: Upload via FTP
