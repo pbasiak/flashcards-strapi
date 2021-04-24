@@ -38,7 +38,7 @@ jobs:
         username: ${{ secrets.PROD_FTP_USERNAME }}
         password: ${{ secrets.PROD_FTP_PASSWORD }}
         local-dir: ./artifact/
-        server-dir: ./api/v1/
+        server-dir: ./api/artifact/
         log-level: verbose
         exclude: .git*
           - .git*/**
