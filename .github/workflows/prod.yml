@@ -30,7 +30,7 @@ jobs:
     - name: 'Create artifact directory'
       run: mkdir artifact
     - name: 'Tar files'
-      run: tar -cvf ./artifact/devflashcard.tar ./ --exclude='./node_modules' --exclude='.git'
+      run: tar --exclude=node_modules --exclude=.git --exclude=.github -cvf ./artifacts/devflashcards.tar ./
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
