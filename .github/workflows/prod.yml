@@ -27,14 +27,16 @@ jobs:
         URL: https://api.devflashcards.com/
     - run: npm ci
     - run: npm run build
+    - name: 'Tar files'
+      run: tar --exclude='./node_modules' --exclude='.git' -cvf ./artifact/devflashcard.tar ./
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: devflashcards.atthost24.pl
         username: ${{ secrets.PROD_FTP_USERNAME }}
         password: ${{ secrets.PROD_FTP_PASSWORD }}
-        local-dir: ./
-        server-dir: ./api/v1/
+        local-dir: ./artifact/
+        server-dir: ./api/artifact/
         log-level: verbose
         exclude: .git*
           - .git*/**
