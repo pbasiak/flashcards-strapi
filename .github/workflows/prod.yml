@@ -27,8 +27,10 @@ jobs:
         URL: https://api.devflashcards.com/
     - run: npm ci
     - run: npm run build
+    - name: 'Create artifact directory'
+      run: mkdir artifact
     - name: 'Tar files'
-      run: tar --exclude='./node_modules' --exclude='.git' -cvf ./artifact/devflashcard.tar ./
+      run: tar -cvf ./artifact/devflashcard.tar ./ --exclude='./node_modules' --exclude='.git'
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
