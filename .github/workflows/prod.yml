@@ -28,9 +28,9 @@ jobs:
     - run: npm ci
     - run: npm run build
     - name: 'Create artifact directory'
-      run: mkdir artifacts
+      run: mkdir artifact
     - name: 'Tar files'
-      run: tar --exclude=node_modules --exclude=.git --exclude=.github -cvf ./artifacts/devflashcards.tar ./
+      run: tar --exclude=node_modules --exclude=.git --exclude=.github -cvf ./artifact/devflashcards.tar ./
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
