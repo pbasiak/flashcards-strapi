@@ -1,5 +1,5 @@
 module.exports = ({ env }) => {
-  if (env('NODE_ENV') === 'development') {
+  if (env('NODE_ENV') === 'local') {
     return {
       defaultConnection: 'default',
       connections: {
@@ -12,6 +12,26 @@ module.exports = ({ env }) => {
             database: env('DATABASE_NAME', 'dbstrapi'),
             username: env('DATABASE_USERNAME', 'dbuser'),
             password: env('DATABASE_PASSWORD', 'test241'),
+            ssl: env.bool('DATABASE_SSL', false),
+          },
+          options: {}
+        },
+      },
+    }
+  }
+  if (env('NODE_ENV') === 'development') {
+    return {
+      defaultConnection: 'default',
+      connections: {
+        default: {
+          connector: 'bookshelf',
+          settings: {
+            client: 'mysql',
+            host: env('DATABASE_HOST', 'localhost'),
+            port: env.int('DATABASE_PORT', 3306),
+            database: env('DATABASE_NAME', ''),
+            username: env('DATABASE_USERNAME', ''),
+            password: env('DATABASE_PASSWORD', ''),
             ssl: env.bool('DATABASE_SSL', false),
           },
           options: {}
