@@ -1,24 +1,4 @@
 module.exports = ({ env }) => {
-  if (env('NODE_ENV') === 'local') {
-    return {
-      defaultConnection: 'default',
-      connections: {
-        default: {
-          connector: 'bookshelf',
-          settings: {
-            client: 'postgres',
-            host: env('DATABASE_HOST', '127.0.0.1'),
-            port: env.int('DATABASE_PORT', 5432),
-            database: env('DATABASE_NAME', 'dbstrapi'),
-            username: env('DATABASE_USERNAME', 'dbuser'),
-            password: env('DATABASE_PASSWORD', 'test241'),
-            ssl: env.bool('DATABASE_SSL', false),
-          },
-          options: {}
-        },
-      },
-    }
-  }
   if (env('NODE_ENV') === 'development') {
     return {
       defaultConnection: 'default',
@@ -26,7 +6,7 @@ module.exports = ({ env }) => {
         default: {
           connector: 'bookshelf',
           settings: {
-            client: 'mysql',
+            client:  env('CLIENT', 'mysql'),
             host: env('DATABASE_HOST', 'localhost'),
             port: env.int('DATABASE_PORT', 3306),
             database: env('DATABASE_NAME', ''),
@@ -38,7 +18,8 @@ module.exports = ({ env }) => {
         },
       },
     }
-  } else {
+  } 
+  if (env('NODE_ENV') === 'production') {
     return {
       defaultConnection: 'default',
       connections: {
