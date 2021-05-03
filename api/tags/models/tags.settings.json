@@ -10,13 +10,13 @@
   },
   "attributes": {
     "decks": {
-      "collection": "decks",
       "via": "tags",
+      "collection": "decks",
       "dominant": true
     },
     "flashcards": {
-      "collection": "flashcard",
       "via": "tags",
+      "collection": "flashcard",
       "dominant": true
     },
     "name": {

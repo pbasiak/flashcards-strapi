@@ -18,13 +18,22 @@
       "dominant": true
     },
     "tags": {
-      "via": "decks",
-      "collection": "tags"
+      "collection": "tags",
+      "via": "decks"
     },
     "users": {
-      "via": "decks",
       "plugin": "users-permissions",
-      "collection": "user"
+      "collection": "user",
+      "via": "decks"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "publish"
+      ],
+      "default": "pending",
+      "required": true
     }
   }
 }

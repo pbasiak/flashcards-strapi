@@ -54,8 +54,8 @@
       "configurable": false
     },
     "decks": {
-      "collection": "decks",
       "via": "users",
+      "collection": "decks",
       "dominant": true
     }
   }

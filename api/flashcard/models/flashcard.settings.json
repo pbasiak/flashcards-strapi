@@ -20,8 +20,17 @@
       "via": "flashcards"
     },
     "tags": {
-      "via": "flashcards",
-      "collection": "tags"
+      "collection": "tags",
+      "via": "flashcards"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "publish"
+      ],
+      "default": "pending",
+      "required": true
     }
   }
 }
