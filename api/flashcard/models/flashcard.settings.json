@@ -16,8 +16,8 @@
       "type": "richtext"
     },
     "decks": {
-      "collection": "decks",
-      "via": "flashcards"
+      "via": "flashcards",
+      "collection": "decks"
     },
     "tags": {
       "collection": "tags",

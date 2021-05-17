@@ -9,21 +9,16 @@
     "timestamps": true
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "flashcards": {
-      "via": "decks",
       "collection": "flashcard",
+      "via": "decks",
       "dominant": true
     },
     "tags": {
       "collection": "tags",
-      "via": "decks"
-    },
-    "users": {
-      "plugin": "users-permissions",
-      "collection": "user",
       "via": "decks"
     },
     "status": {
@@ -34,6 +29,14 @@
       ],
       "default": "pending",
       "required": true
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "decks"
+    },
+    "description": {
+      "type": "string"
     }
   }
 }

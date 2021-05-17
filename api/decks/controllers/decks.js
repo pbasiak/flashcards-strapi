@@ -1,42 +1,58 @@
 'use strict';
 
-const { sanitizeEntity } = require('strapi-utils');
-
-/**
- * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
- * to customize this controller
- */
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
-    async updateLike(ctx) {
-        const { id } = ctx.params;
-        const currentDeck = await strapi.services.decks.find({id: id});
-        const deckUsers = currentDeck[0].users;
-        const isUserLike = deckUsers.find(item => item.id === ctx.state.user.id);
+  /**
+   * Create a record.
+   *
+   * @return {Object}
+   */
 
-        console.log(deckUsers);
+  async create(ctx) {
+    let entity;
+    if (ctx.is('multipart')) {
+      const { data, files } = parseMultipartData(ctx);
+      data.author = ctx.state.user.id;
+      console.log(data);
+      entity = await strapi.services.decks.create(data, { files });
+    } else {
+      ctx.request.body.author = ctx.state.user.id;
+      console.log(ctx.request.body);
+      entity = await strapi.services.decks.create(ctx.request.body);
+    }
+    return sanitizeEntity(entity, { model: strapi.models.decks });
+  },
 
-        if (isUserLike) {
-            ctx.send('304'); // TODO: return 304
-        }
+  /**
+   * Update a record.
+   *
+   * @return {Object}
+   */
 
-        const entity = await strapi.services.decks.update({ id }, {users: [ ...deckUsers, ctx.state.user]}); // TODO: DOESNT DO LIKE WHEN OBJECT CONTAINS ANOTHER USER
+  async update(ctx) {
+    const { id } = ctx.params;
 
-        return sanitizeEntity(entity, { model: strapi.models.decks});
-    },
+    let entity;
 
-    async updateUnlike(ctx) {
-        const { id } = ctx.params;
-        const currentDeck = await strapi.services.decks.findOne({id: id});
-        const isUserLike = currentDeck.users.find(item => item.id === ctx.state.user.id);
+    const [decks] = await strapi.services.decks.find({
+      id: ctx.params.id,
+      'author.id': ctx.state.user.id,
+    });
 
-        if (!isUserLike) {
-            ctx.send('304'); // TODO: return 304
-        }
+    if (!decks) {
+      return ctx.unauthorized(`You can't update this entry`);
+    }
 
-        const users = currentDeck.users.map(item => item.id === ctx.state.user.id ? null : item).filter(item => item !== null);
-        const entity = await strapi.services.decks.update({ id }, {users: users});
+    if (ctx.is('multipart')) {
+      const { data, files } = parseMultipartData(ctx);
+      entity = await strapi.services.decks.update({ id }, data, {
+        files,
+      });
+    } else {
+      entity = await strapi.services.decks.update({ id }, ctx.request.body);
+    }
 
-        return sanitizeEntity(entity, { model: strapi.models.decks});
-    },
+    return sanitizeEntity(entity, { model: strapi.models.decks });
+  },
 };
