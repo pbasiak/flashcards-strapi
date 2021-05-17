@@ -13,8 +13,8 @@
       "type": "string"
     },
     "flashcards": {
-      "collection": "flashcard",
       "via": "decks",
+      "collection": "flashcard",
       "dominant": true
     },
     "tags": {

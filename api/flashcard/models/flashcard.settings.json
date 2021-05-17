@@ -16,8 +16,8 @@
       "type": "richtext"
     },
     "decks": {
-      "via": "flashcards",
-      "collection": "decks"
+      "collection": "decks",
+      "via": "flashcards"
     },
     "tags": {
       "collection": "tags",
@@ -31,6 +31,11 @@
       ],
       "default": "pending",
       "required": true
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "flashcards"
     }
   }
 }
