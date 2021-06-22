@@ -36,6 +36,16 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "flashcards"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "junior",
+        "mid",
+        "senior"
+      ],
+      "required": true,
+      "default": "mid"
     }
   }
 }

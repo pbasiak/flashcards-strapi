@@ -37,6 +37,16 @@
     },
     "description": {
       "type": "string"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "junior",
+        "mid",
+        "senior"
+      ],
+      "default": "mid",
+      "required": true
     }
   }
 }
